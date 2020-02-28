@@ -1,0 +1,94 @@
+input InputAdres{
+    strasse:String
+    stadt:String
+    plz:String
+    no:String
+}
+input InputBeruf{
+    name:String
+    description:String
+}
+input InputPerson{
+    name:String
+    vorname:String
+    adres: InputAdres
+    beruf: InputBeruf
+    falovers:[InputPerson]
+    fallows:[InputPerson]
+
+}
+type Beruf {
+    id:ID!
+    name:String
+    description:String
+}
+type Adres{
+    id:ID!
+    strasse:String
+    stadt:String
+    plz:String
+    no:String
+
+}
+type User {
+    id:ID!
+    email:String
+    password:String
+    tokenversion:Int
+}
+input InputUser {
+    email:String
+    password:String
+    tokenversion:Int
+}
+
+type Person {
+    id:ID!
+    name:String
+    vorname:String
+    adres: Adres
+    beruf: Beruf
+    falovers:[Person]
+    fallows:[Person]
+}
+type SigninPayload{
+    accessToken: String
+    user:User
+}
+
+
+
+input AuthData {
+    email: String!
+    password: String!
+}
+
+ type  Query {
+    getPerson(id:ID!):Person!
+    getAllPerson:[Person]
+    getPersonBy(name:String,vorname:String):[Person]
+    getAdres(id:ID!):Adres!
+    getAllAdres:[Adres]!
+    getBeruf(id:ID!):Beruf!
+    getAllBeruf:[Beruf]!
+#     securedResource: String
+#     securedResourceAdmin: String
+#     unsecuredResource: String
+#    getUser(id:ID!):User!
+#    getUserByEmail(email:String):User!
+}
+ type Mutation{
+    createPerson(inputperson:InputPerson):Person
+    updatePerson(id:ID,inputperson:InputPerson):Person
+    deletePerson(id:ID):Boolean
+         createAdres(input:InputAdres):Adres
+         updateAdres(id:ID,input:InputAdres):Adres
+         deleteAdres(id:ID):Boolean
+         createBeruf(inputperson:InputBeruf):Beruf
+         updateBeruf(id:ID,inputberuf:InputBeruf):Beruf
+         deleteBeruf(id:ID):Boolean
+     createuser(authProvider: AuthData!):User
+     deleteuser(id:ID):Boolean
+     updateuser(id:ID,auth:AuthData):User
+     login(auth:AuthData):SigninPayload
+}
