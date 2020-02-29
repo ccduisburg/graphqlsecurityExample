@@ -15,10 +15,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import javax.crypto.SecretKey;
 
-
+@CrossOrigin(origins = "*",maxAge = 3600)
 @EnableWebSecurity
     @EnableGlobalMethodSecurity(prePostEnabled = true)// bu bize metodlar düzeyinde kullanabileceğimiz yeni bir güvenlik kısıtlamaları dünyası açtı
     public class SecurityConfig extends WebSecurityConfigurerAdapter {

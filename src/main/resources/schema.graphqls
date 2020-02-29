@@ -87,8 +87,8 @@ input AuthData {
          createBeruf(inputperson:InputBeruf):Beruf
          updateBeruf(id:ID,inputberuf:InputBeruf):Beruf
          deleteBeruf(id:ID):Boolean
-     createuser(authProvider: AuthData!):User
+     createuser(email:String!,password:String!):User
      deleteuser(id:ID):Boolean
      updateuser(id:ID,auth:AuthData):User
-     login(auth:AuthData):SigninPayload
+     login(email:String!,password:String!):SigninPayload
 }

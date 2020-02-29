@@ -3,6 +3,7 @@ package com.concon.graphqlexample.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.annotation.Nullable;
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +15,7 @@ public class User {
     private int id;
     private String email;
     private String password;
+    @Nullable
     private int tokenversion;
 
     public User() {
